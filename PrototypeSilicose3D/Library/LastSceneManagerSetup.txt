@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Sky FX Pack/Demo Scenes/BlowingLeaves.unity
+  isLoaded: 1
+  isActive: 1

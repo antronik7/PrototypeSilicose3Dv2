@@ -22,14 +22,16 @@ public class BoutonsMainMenu : MonoBehaviour {
 
     public void OnEnter()
     {
-        gameObject.transform.Translate(new Vector3(25, 0, 0));
-        under.GetComponent<Text>().fontSize = 38;
-        over.GetComponent<Text>().fontSize = 38;
+        under.transform.Translate(new Vector3(20, 0, 0));
+        over.transform.Translate(new Vector3(20, 0, 0));
+        under.GetComponent<Text>().fontSize = 40;
+        over.GetComponent<Text>().fontSize = 40;
     }
 
     public void OnExit()
     {
-        gameObject.transform.Translate(new Vector3(-25, 0, 0));
+        under.transform.Translate(new Vector3(-20, 0, 0));
+        over.transform.Translate(new Vector3(-20, 0, 0));
         under.GetComponent<Text>().fontSize = 35;
         over.GetComponent<Text>().fontSize = 35;
     }

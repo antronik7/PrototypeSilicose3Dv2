@@ -15,9 +15,12 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
     [Tooltip("Cocher si l'objet doit etre cliquer pour gagner")]
     [SerializeField] bool GoodAwnser;
 
+    [SerializeField]
+    GameObject panelBox;
+
     CarteCliqueControlleur ctrlClique;
 
-    [Tooltip("Entre 0 et 13. mettre 0 si l'objet est une mauvaise reponse")]
+    [Tooltip("Entre 0 et 12. mettre 0 si l'objet est une mauvaise reponse")]
     [Range(0, 12)]
     [SerializeField]
     int numeroCarte;
@@ -98,6 +101,9 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
             object6.GetComponent<Collider>().enabled = false;
         }
 
+
+
+        
         ctrlClique.joueurACliquer(numeroCarte);
     }
 }

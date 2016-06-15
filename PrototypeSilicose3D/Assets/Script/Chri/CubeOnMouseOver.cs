@@ -3,6 +3,9 @@ using System.Collections;
 
 public class CubeOnMouseOver : MonoBehaviour {
 
+    [SerializeField]
+    GameObject panelBox;
+
     [SerializeField] Material good;
     [SerializeField] Material bad;
     [SerializeField] Material Aways;
@@ -48,6 +51,7 @@ public class CubeOnMouseOver : MonoBehaviour {
             GetComponent<Collider>().enabled = false;
         }
 
+        panelBox.GetComponent<PanelController>().Apparait(numeroCarte);
         ctrlClique.joueurACliquer(numeroCarte);
     }
 }

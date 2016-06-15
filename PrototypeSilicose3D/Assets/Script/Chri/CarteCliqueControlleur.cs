@@ -53,7 +53,7 @@ public class CarteCliqueControlleur : MonoBehaviour {
             {
                 compteurMauvais++;
                 GameObject temp = (GameObject)Instantiate(mauvais, new Vector3(listeCartes[maxClique - compteurMauvais].transform.position.x, listeCartes[maxClique - compteurMauvais].transform.position.y, 1), Quaternion.Euler(rotation));
-                temp.transform.parent = listeCartes[maxClique - compteurMauvais].transform; 
+                temp.transform.SetParent(listeCartes[maxClique - compteurMauvais].transform); 
             }
 
             compteurClique++;

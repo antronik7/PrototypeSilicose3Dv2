@@ -13,7 +13,7 @@ public class PanelController : MonoBehaviour {
     [SerializeField]
     GameObject[] tableauCarte;
 
-    int carte;
+    int carte = 20;
     Vector3 rotation;
 
     // Use this for initialization
@@ -33,9 +33,12 @@ public class PanelController : MonoBehaviour {
 
     public void SpawnCard()
     {
-        GameObject temp = (GameObject)Instantiate(tableauCarte[carte], new Vector3(cardSpawnPoint.transform.position.x, cardSpawnPoint.transform.position.y, cardSpawnPoint.transform.position.z), Quaternion.Euler(rotation));
-        temp.transform.parent = cardSpawnPoint.transform;
-        temp.transform.localScale = new Vector3(4, 4, 1);
+        if (carte < 15)
+        {
+            GameObject temp = (GameObject)Instantiate(tableauCarte[carte], new Vector3(cardSpawnPoint.transform.position.x, cardSpawnPoint.transform.position.y, cardSpawnPoint.transform.position.z), Quaternion.Euler(rotation));
+            temp.transform.parent = cardSpawnPoint.transform;
+            temp.transform.localScale = new Vector3(4, 4, 1);
+        }
     }
 
     public void Apparait(int numCard)

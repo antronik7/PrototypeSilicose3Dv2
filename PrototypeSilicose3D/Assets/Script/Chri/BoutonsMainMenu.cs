@@ -10,6 +10,8 @@ public class BoutonsMainMenu : MonoBehaviour {
     [SerializeField]
     GameObject over;
 
+    public GameObject Menu;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -38,7 +40,8 @@ public class BoutonsMainMenu : MonoBehaviour {
 
     public void OnClickCommencer()
     {
-
+        Camera.main.GetComponent<Animator>().enabled = true;
+        Menu.SetActive(false);
     }
 
     public void OnClickOptions()

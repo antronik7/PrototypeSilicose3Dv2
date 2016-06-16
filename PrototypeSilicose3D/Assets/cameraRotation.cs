@@ -22,35 +22,40 @@ public class cameraRotation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetMouseButton(0))
-        {
             
-            //transform.RotateAround(target.position, Vector3.up, Input.GetAxis("Mouse X") * 5);
+            if (Input.GetMouseButton(0))
+            {
+                Debug.Log("2");
+                //transform.RotateAround(target.position, Vector3.up, Input.GetAxis("Mouse X") * 5);
 
-            t = t + (Input.GetAxis("Mouse X") / 40);
+                t = t + (Input.GetAxis("Mouse X") / 40);
 
-            z = height.position.z * Mathf.Cos(t);
-            x = with.position.x * Mathf.Sin(t);
+                z = height.position.z * Mathf.Cos(t);
+                x = with.position.x * Mathf.Sin(t);
 
-            transform.position = new Vector3(x, transform.position.y, z);
-        }
-        else
-        {
-            t = t + (Input.GetAxis("Horizontal") / -50);
+                transform.position = new Vector3(x, transform.position.y, z);
+            }
+            else
+            {
+                t = t + (Input.GetAxis("Horizontal") / -50);
 
-            z = height.position.z * Mathf.Cos(t);
-            x = with.position.x * Mathf.Sin(t);
+                z = height.position.z * Mathf.Cos(t);
+                x = with.position.x * Mathf.Sin(t);
 
-            transform.position = new Vector3(x, transform.position.y, z);
-        }
+                transform.position = new Vector3(x, transform.position.y, z);
+            }
 
+
+
+            Camera.main.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 50;
+            Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30, 60);
         
+        
+            transform.LookAt(target);
+    }
 
-        Camera.main.fieldOfView -= Input.GetAxis("Mouse ScrollWheel") * 50;
-        Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView, 30, 60);
-
-
-
-        transform.LookAt(target);
+    public void StartGame()
+    {
+        GameManager.instance.StartGame();
     }
 }

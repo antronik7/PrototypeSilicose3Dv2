@@ -85,7 +85,20 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
         }
 
 
-        panelBox.GetComponent<PanelController>().SetText(textAAfficher);
+        string Letitre;
+
+        if(numeroCarte > 0)
+        {
+            Letitre = "Bien joué!";
+            GameManager.instance.Score++;
+        }
+        else
+        {
+            Letitre = "Oups!";
+            GameManager.instance.NegatifScore++;
+        }
+
+        panelBox.GetComponent<PanelController>().SetText(textAAfficher, Letitre);
         panelBox.GetComponent<PanelController>().Apparait(numeroCarte);
         ctrlClique.joueurACliquer(numeroCarte);
     }

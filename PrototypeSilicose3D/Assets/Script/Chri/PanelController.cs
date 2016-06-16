@@ -7,6 +7,8 @@ public class PanelController : MonoBehaviour {
     [SerializeField]
     GameObject textField;
 
+    public GameObject Titre;
+
     [SerializeField]
     GameObject cardSpawnPoint;
 
@@ -26,9 +28,10 @@ public class PanelController : MonoBehaviour {
 	
 	}
 
-    public void SetText(string newText)
+    public void SetText(string newText, string LeTitre)
     {
         textField.GetComponent<Text>().text = newText;
+        Titre.GetComponent<Text>().text = LeTitre;
     }
 
     public void SpawnCard()

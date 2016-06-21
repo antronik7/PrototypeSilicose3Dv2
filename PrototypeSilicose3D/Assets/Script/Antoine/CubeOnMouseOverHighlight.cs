@@ -14,9 +14,6 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
     [SerializeField]
     GameObject panelBox;
 
-    [SerializeField][TextArea]
-    string textAAfficher;
-
     CarteCliqueControlleur ctrlClique;
 
     [Tooltip("Entre 0 et 12. mettre 0 si l'objet est une mauvaise reponse")]
@@ -73,6 +70,7 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
             object3.GetComponent<Renderer>().material = object3.GetComponent<ListMaterial>().good;
             object4.GetComponent<Renderer>().material = object4.GetComponent<ListMaterial>().good;
             object5.GetComponent<Renderer>().material = object5.GetComponent<ListMaterial>().good;
+            panelBox.GetComponent<PanelController>().feedback(numeroCarte);
         }
         else
         {
@@ -82,6 +80,7 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
             object3.GetComponent<Renderer>().material = object3.GetComponent<ListMaterial>().bad;
             object4.GetComponent<Renderer>().material = object4.GetComponent<ListMaterial>().bad;
             object5.GetComponent<Renderer>().material = object5.GetComponent<ListMaterial>().bad;
+            panelBox.GetComponent<PanelController>().feedback();
         }
 
 
@@ -98,8 +97,6 @@ public class CubeOnMouseOverHighlight : MonoBehaviour {
             GameManager.instance.NegatifScore++;
         }
 
-        panelBox.GetComponent<PanelController>().SetText(textAAfficher, Letitre);
-        panelBox.GetComponent<PanelController>().Apparait(numeroCarte);
         ctrlClique.joueurACliquer(numeroCarte);
     }
 }

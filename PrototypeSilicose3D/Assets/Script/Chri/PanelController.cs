@@ -5,6 +5,12 @@ using System.Collections;
 public class PanelController : MonoBehaviour {
 
     [SerializeField]
+    GameObject feedbackNeg;
+
+    [SerializeField]
+    GameObject feedbackPos;
+
+    [SerializeField]
     GameObject textField;
 
     public GameObject Titre;
@@ -53,5 +59,21 @@ public class PanelController : MonoBehaviour {
     public void Disparait()
     {
         gameObject.GetComponent<Animator>().SetBool("apparait", false);
+    }
+
+    //feedback negatif
+    public void feedback()
+    {
+        GameObject temp = (GameObject)Instantiate(feedbackNeg, Input.mousePosition, Quaternion.Euler(rotation));
+        temp.transform.SetParent(gameObject.transform.parent);
+    }
+
+
+    //feedback positif
+    public void feedback(int numCard)
+    {
+        GameObject temp = (GameObject)Instantiate(feedbackPos, Input.mousePosition, Quaternion.identity);
+        temp.transform.SetParent(gameObject.transform.parent);
+        temp.GetComponent<FeedbackPositifController>().AfficherCarte(tableauCarte[numCard]);
     }
 }

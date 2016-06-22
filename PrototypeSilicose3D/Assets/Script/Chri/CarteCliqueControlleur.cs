@@ -84,7 +84,7 @@ public class CarteCliqueControlleur : MonoBehaviour {
         for(int i = 0; i < compteurBon; i++)
         {
             bonneCarte.Add((GameObject)Instantiate(carteASpawner[listeDeCarte[i]], new Vector3(listeCartes[i].transform.position.x, listeCartes[i].transform.position.y, 1), Quaternion.Euler(rotation)));
-            bonneCarte[i].transform.parent = listeCartes[i].transform;
+            bonneCarte[i].transform.SetParent(listeCartes[i].transform);
         }
     }    
 }

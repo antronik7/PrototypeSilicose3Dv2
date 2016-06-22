@@ -15,12 +15,10 @@ public class FeedbackPositifController : MonoBehaviour {
 
     GameObject carteAfficher;
     bool estAfficher = false;
-    private float translation = 0.2f;
-    Vector3 rotation;
+    private float translation = 50f;
 
     // Use this for initialization
     void Start () {
-        rotation = new Vector3(0, 0, -12.5f);
         imgThumbs = thumbs.GetComponent<Image>();
 	
 	}
@@ -31,12 +29,12 @@ public class FeedbackPositifController : MonoBehaviour {
         if(estAfficher)
         {
             translation = Time.deltaTime * 2;
-            transform.Translate(0, translation, 0);
+            gameObject.transform.Translate(0, translation, 0);
 
-            imgThumbs.color = new Vector4(imgThumbs.color.r, imgThumbs.color.g, imgThumbs.color.b, imgThumbs.color.a - 0.02f);
-            imgCarte.color = new Vector4(imgCarte.color.r, imgCarte.color.g, imgCarte.color.b, imgCarte.color.a - 0.02f);
+            imgThumbs.color = new Vector4(imgThumbs.color.r, imgThumbs.color.g, imgThumbs.color.b, imgThumbs.color.a - 0.01f);
+            imgCarte.color = new Vector4(imgCarte.color.r, imgCarte.color.g, imgCarte.color.b, imgCarte.color.a - 0.01f);
 
-            if (imgThumbs.color.a == 0)
+            if (imgCarte.color.a == 0)
             {
                 Destroy(gameObject);
             }
@@ -46,8 +44,9 @@ public class FeedbackPositifController : MonoBehaviour {
 
     public void AfficherCarte(GameObject carte)
     {
-        carteAfficher = (GameObject)Instantiate(carte, spawnPos.transform.position, Quaternion.Euler(rotation));
+        carteAfficher = (GameObject)Instantiate(carte, spawnPos.transform.position, Quaternion.identity);
         carteAfficher.transform.SetParent(gameObject.transform);
+        carteAfficher.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, -12.5f));
         carteAfficher.transform.localScale = new Vector3(2.5f, 2.5f, 1);
         imgCarte = carteAfficher.GetComponent<Image>();
         estAfficher = true;

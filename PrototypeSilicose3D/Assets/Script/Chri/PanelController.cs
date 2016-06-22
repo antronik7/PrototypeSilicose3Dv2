@@ -64,7 +64,7 @@ public class PanelController : MonoBehaviour {
     //feedback negatif
     public void feedback()
     {
-        GameObject temp = (GameObject)Instantiate(feedbackNeg, Input.mousePosition, Quaternion.Euler(rotation));
+        GameObject temp = (GameObject)Instantiate(feedbackNeg, Input.mousePosition, Quaternion.identity);
         temp.transform.SetParent(gameObject.transform.parent);
     }
 

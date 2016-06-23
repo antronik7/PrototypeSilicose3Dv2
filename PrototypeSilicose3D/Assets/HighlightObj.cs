@@ -4,6 +4,8 @@ using System.Collections;
 public class HighlightObj : MonoBehaviour {
 
     public GameObject dust;
+    public GameObject panelBox;
+    public GameObject controller;
 
     CarteCliqueControlleur ctrlClique;
 
@@ -43,11 +45,25 @@ public class HighlightObj : MonoBehaviour {
 
     void OnMouseDown()
     {
-        GetComponent<Renderer>().material = GetComponent<ListMaterial>().good;
-        GetComponent<Collider>().enabled = false;
+        if(numeroCarte > 0)
+        {
+            GetComponent<Renderer>().material = GetComponent<ListMaterial>().good;
+            GetComponent<Collider>().enabled = false;
 
-        GetComponent<Animator>().enabled = true;
-        ctrlClique.joueurACliquer(numeroCarte);
+            GetComponent<Animator>().enabled = true;
+            ctrlClique.joueurACliquer(numeroCarte);
+
+            controller.GetComponent<main2Controller>().score++;
+        }
+        else
+        {
+            GetComponent<Renderer>().material = GetComponent<ListMaterial>().bad;
+            GetComponent<Collider>().enabled = false;
+
+            ctrlClique.joueurACliquer(numeroCarte);
+        }
+
+        panelBox.GetComponent<PanelController>().feedback(numeroCarte);
     }
 
     public void destroyDust()

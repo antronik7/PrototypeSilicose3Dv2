@@ -59,11 +59,10 @@ public class GameManager : MonoBehaviour {
     {
         GameStart = true;
         
-        panelBox.GetComponent<PanelController>().SetText("Trouvez et identifier les travailleurs qui travaillent selon les normes de sécurité afin de compléter votre paquet de carte. Évitez les travailleurs non sécuritaires car ils vous feront perdre des points. Utiliser le clique droit pour déplacer la caméra avec la souris. Vous pouvez également zoomer en utilisant la roulette. Bonne chance!", "Comment jouer?");
+        panelBox.GetComponent<PanelController>().SetText("Trouvez et identifier les 12 travailleurs qui ne travaillent pas selon les normes de securite. Chercherz bien, certains sont bien cache. Bonne chance!", "Identification");
         panelBox.GetComponent<PanelController>().Apparait(13);
 
         Camera.main.GetComponent<cameraRotation>().enabled = true;
-        Camera.main.GetComponent<Animator>().enabled = false;
         Hud.SetActive(true);
     }
 }

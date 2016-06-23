@@ -11,6 +11,7 @@ public class BoutonsMainMenu : MonoBehaviour {
     GameObject over;
 
     public GameObject Menu;
+    public GameObject Transition;
 
 	// Use this for initialization
 	void Start () {
@@ -40,8 +41,8 @@ public class BoutonsMainMenu : MonoBehaviour {
 
     public void OnClickCommencer()
     {
-        Camera.main.GetComponent<Animator>().enabled = true;
-        Menu.SetActive(false);
+        Transition.transform.position = new Vector3(0, 0, 0);
+        Transition.GetComponent<Animator>().enabled = true;
     }
 
     public void OnClickOptions()

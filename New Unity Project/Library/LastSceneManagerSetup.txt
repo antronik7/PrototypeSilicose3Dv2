@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/LeanTween/Examples/Scenes/PathSplineTrackCS.unity
+  isLoaded: 1
+  isActive: 1

@@ -15,6 +15,7 @@ public class FeedbackPositifController : MonoBehaviour {
 
     GameObject carteAfficher;
     bool estAfficher = false;
+    bool firstTime = true;
     private float translation = 50f;
 
     // Use this for initialization
@@ -28,16 +29,24 @@ public class FeedbackPositifController : MonoBehaviour {
 
         if(estAfficher)
         {
-            translation = Time.deltaTime * 2;
-            gameObject.transform.Translate(0, translation, 0);
-
-            imgThumbs.color = new Vector4(imgThumbs.color.r, imgThumbs.color.g, imgThumbs.color.b, imgThumbs.color.a - 0.01f);
-            imgCarte.color = new Vector4(imgCarte.color.r, imgCarte.color.g, imgCarte.color.b, imgCarte.color.a - 0.01f);
-
-            if (imgCarte.color.a == 0)
+            if(firstTime)
             {
-                Destroy(gameObject);
+                StartCoroutine(Delay());
             }
+            else
+            {
+                translation = Time.deltaTime * 50;
+                gameObject.transform.Translate(0, translation, 0);
+
+                imgThumbs.color = new Vector4(imgThumbs.color.r, imgThumbs.color.g, imgThumbs.color.b, imgThumbs.color.a - 0.01f);
+                imgCarte.color = new Vector4(imgCarte.color.r, imgCarte.color.g, imgCarte.color.b, imgCarte.color.a - 0.01f);
+
+                if (imgThumbs.color.a <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+            
         }
 	
 	}
@@ -50,5 +59,13 @@ public class FeedbackPositifController : MonoBehaviour {
         carteAfficher.transform.localScale = new Vector3(2.5f, 2.5f, 1);
         imgCarte = carteAfficher.GetComponent<Image>();
         estAfficher = true;
+    }
+
+    IEnumerator Delay()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(0.5f);
+        print(Time.time);
+        firstTime = false;
     }
 }

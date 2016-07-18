@@ -10,6 +10,8 @@ public class CarteCliqueControlleur : MonoBehaviour {
     [SerializeField] GameObject[] listeCartes;
     [SerializeField] int maxClique;
     [SerializeField] GameObject mauvais;
+    [SerializeField] AudioClip bonSon;
+    [SerializeField] AudioClip mauvaisSon;
 
     List<int> listeDeCarte;
     List<GameObject> bonneCarte;
@@ -48,12 +50,15 @@ public class CarteCliqueControlleur : MonoBehaviour {
                 listeDeCarte.Sort();
                 compteurBon++;
                 updateBonneCarte();
+                playGoodSound();
             }
             else
             {
                 compteurMauvais++;
                 GameObject temp = (GameObject)Instantiate(mauvais, new Vector3(listeCartes[maxClique - compteurMauvais].transform.position.x, listeCartes[maxClique - compteurMauvais].transform.position.y, 1), Quaternion.Euler(rotation));
-                temp.transform.SetParent(listeCartes[maxClique - compteurMauvais].transform); 
+                temp.transform.SetParent(listeCartes[maxClique - compteurMauvais].transform);
+                temp.transform.localScale = new Vector3(1, 1, 1);
+                playBadSound();
             }
 
             compteurClique++;
@@ -70,6 +75,7 @@ public class CarteCliqueControlleur : MonoBehaviour {
             //Faire appel au gameover somehow
             bonneCarte.Add((GameObject)Instantiate(carteASpawner[0], new Vector3(listeCartes[12].transform.position.x, listeCartes[12].transform.position.y, 1), Quaternion.Euler(rotation)));
             bonneCarte[12].transform.parent = listeCartes[12].transform;
+            bonneCarte[12].transform.localScale = new Vector3(1, 1, 1);
             listeDeCarte.Add(0);
             listeDeCarte.Sort();
             compteurBon++;
@@ -85,6 +91,19 @@ public class CarteCliqueControlleur : MonoBehaviour {
         {
             bonneCarte.Add((GameObject)Instantiate(carteASpawner[listeDeCarte[i]], new Vector3(listeCartes[i].transform.position.x, listeCartes[i].transform.position.y, 1), Quaternion.Euler(rotation)));
             bonneCarte[i].transform.SetParent(listeCartes[i].transform);
+            bonneCarte[i].transform.localScale = new Vector3(1, 1, 1);
         }
     }    
+
+    void playGoodSound()
+    {
+        gameObject.GetComponent<AudioSource>().clip = bonSon;
+        gameObject.GetComponent<AudioSource>().Play();
+    }
+
+    void playBadSound()
+    {
+        gameObject.GetComponent<AudioSource>().clip = mauvaisSon;
+        gameObject.GetComponent<AudioSource>().Play();
+    }
 }

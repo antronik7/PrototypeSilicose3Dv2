@@ -49,21 +49,27 @@ public class HighlightObj : MonoBehaviour {
         {
             GetComponent<Renderer>().material = GetComponent<ListMaterial>().good;
             GetComponent<Collider>().enabled = false;
-
             GetComponent<Animator>().enabled = true;
-            ctrlClique.joueurACliquer(numeroCarte);
 
+            //afficher feedback positif
+            panelBox.GetComponent<PanelController>().feedback(numeroCarte);
+
+            ctrlClique.joueurACliquer(numeroCarte);
             controller.GetComponent<main2Controller>().score++;
+            
         }
         else
         {
             GetComponent<Renderer>().material = GetComponent<ListMaterial>().bad;
             GetComponent<Collider>().enabled = false;
 
+            //afficher feedback negatif
+            panelBox.GetComponent<PanelController>().feedback();
+
             ctrlClique.joueurACliquer(numeroCarte);
         }
 
-        panelBox.GetComponent<PanelController>().feedback(numeroCarte);
+        
     }
 
     public void destroyDust()

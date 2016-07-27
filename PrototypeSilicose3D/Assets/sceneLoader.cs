@@ -11,12 +11,21 @@ public class sceneLoader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("1"))
-            Application.LoadLevel("main");
+            Application.LoadLevel("Menu");
 
         if (Input.GetKeyDown("2"))
-            Application.LoadLevel("main2");
+            Application.LoadLevel("Tuto");
 
         if (Input.GetKeyDown("3"))
+            Application.LoadLevel("main");
+
+        if(Input.GetKeyDown("4"))
+            Application.LoadLevel("main2");
+
+        if(Input.GetKeyDown("5"))
             Application.LoadLevel("card");
+
+        if (Input.GetKeyDown("6"))
+            Application.LoadLevel("testAnimation");
     }
 }

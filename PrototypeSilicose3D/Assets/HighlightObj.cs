@@ -69,5 +69,6 @@ public class HighlightObj : MonoBehaviour {
     public void destroyDust()
     {
         Destroy(dust);
+        controller.GetComponent<main2Controller>().clic++;
     }
 }

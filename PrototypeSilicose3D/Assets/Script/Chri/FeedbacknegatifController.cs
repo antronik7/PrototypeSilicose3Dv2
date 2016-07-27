@@ -14,6 +14,7 @@ public class FeedbacknegatifController : MonoBehaviour {
     Image imgCarte;
 
     private float translation = 50f;
+    bool firstTime = true;
 
     // Use this for initialization
     void Start()
@@ -27,7 +28,13 @@ public class FeedbacknegatifController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-            translation = Time.deltaTime * 2;
+        if (firstTime)
+        {
+            StartCoroutine(Delay());
+        }
+        else
+        {
+            translation = Time.deltaTime * 50;
             gameObject.transform.Translate(0, translation, 0);
 
             imgThumbs.color = new Vector4(imgThumbs.color.r, imgThumbs.color.g, imgThumbs.color.b, imgThumbs.color.a - 0.01f);
@@ -37,7 +44,16 @@ public class FeedbacknegatifController : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
-     
+        }
+
+    }
+
+    IEnumerator Delay()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(0.5f);
+        print(Time.time);
+        firstTime = false;
     }
 
 }

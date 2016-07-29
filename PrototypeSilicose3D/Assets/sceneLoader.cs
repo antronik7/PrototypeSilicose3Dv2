@@ -22,10 +22,13 @@ public class sceneLoader : MonoBehaviour {
         if(Input.GetKeyDown("4"))
             Application.LoadLevel("main2");
 
-        if(Input.GetKeyDown("5"))
-            Application.LoadLevel("card");
+        if (Input.GetKeyDown("5"))
+            Application.LoadLevel("main3");
 
         if (Input.GetKeyDown("6"))
-            Application.LoadLevel("testAnimation");
+            Application.LoadLevel("card");
+
+        if (Input.GetKeyDown("7"))
+            Application.LoadLevel("animation");
     }
 }
